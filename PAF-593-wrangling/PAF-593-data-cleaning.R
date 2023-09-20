@@ -23,70 +23,71 @@ dat <- readRDS( file = here( "PAF-593-wrangling/arrest-raw.rds" ) )
 # clean data and restructure for creating networks
 
 dat.edgelist <- dat %>% 
-  select( UNIQUE_NAME_ID, ARST_OFFICER, HUNDREDBLOCKADDR ) %>%  # keep the variables you need
+  select( YEAR, UNIQUE_NAME_ID, ARST_OFFICER, HUNDREDBLOCKADDR ) %>%  # keep the variables you need
   group_by( HUNDREDBLOCKADDR, ARST_OFFICER ) %>%                # group by address then officer id
-  filter( n() > 1 ) %>%                                         # only keep cases that involve more than 1 arrest
+  filter( n() > 1 ) %>%                                         # only keep cases that involve more than 1 person arrested
   arrange( ARST_OFFICER ) %>%                                   # arrange by arresting officer
   mutate( incident_id = cur_group_id() ) %>%                    # create unique id for event
   ungroup() %>%                                                 # un-group the data
   group_by( UNIQUE_NAME_ID ) %>%                                # group by unique person id
   mutate( person_id = cur_group_id() ) %>%                      # create a unique person id that is numeric
-  ungroup() %>%                                                 # un-group the data 
-  select( incident_id, UNIQUE_NAME_ID ) %>%                          # keep the incident and person id for the edgelist
-  #select( incident_id, person_id ) %>%                          # keep the incident and person id for the edgelist
-  #arrange( incident_id, person_id )                             # arrange by incident then person id
-  arrange( incident_id, UNIQUE_NAME_ID )                             # arrange by incident then person id
+  ungroup() 
 View( dat.edgelist )
 
-# coerce to an object of class matrix
-mat.edgelist <- as.matrix( dat.edgelist )
-dim( mat.edgelist ) # 34263 edges in the network.
-length( unique( mat.edgelist[,1] ) ) # 14,788 unique events
-length( unique( mat.edgelist[,2] ) ) # 10,773 unique individuals
 
+# create the edgelists for each year ----
 
-!!!NEED TO:
-  Clean this up
-  Do it by year I think because the adj matrix is too large
+# check the years
+table( dat.edgelist$YEAR )
 
+year.network <- function( edgelist, year ) {
 
-officer.event.edgelist <- mat.edgelist
-
-# First, create the adjacency matrix
-uR <-unique(officer.event.edgelist[,1])   # all unique row labels.
-uC <- unique(officer.event.edgelist[,2])  # all unique column labels.
-mat <- matrix(0, length(uR), length(uC))  # initialize zeroed matrix.
-rownames(mat) <- uR  # name the rows.
-colnames(mat) <- uC  # name the columns.
-mat[officer.event.edgelist] <- 1   # fill edgelist indexed edges with a 1.
-diag(mat) <- 0
-
-# Take a look at the matrix.
-sum(mat) # 343 edges.
-dim(mat) # 81 officers by 153 events.
-
-mat2 <- mat[1:500,1:500]
-
-
-officer.event.net <- as.network(mat2,bipartite=TRUE,matrix.type="adjacency")
-
-
+  dat.edgelist.year <- edgelist %>% 
+    select( YEAR, incident_id, UNIQUE_NAME_ID ) %>%               # keep the year, incident, and person id for the edgelist
+    arrange( YEAR ) %>%                                           # arrange by year
+    filter( YEAR == year ) %>%                                    # keep based on year
+    select( incident_id, UNIQUE_NAME_ID ) %>%                     # keep the incident and person id for the edgelist
+    arrange( incident_id, UNIQUE_NAME_ID )                        # arrange by incident then person id
+  
+  mat.edgelist.year <- as.matrix( dat.edgelist.year )             # coerce to an object of class matrix
+  mat <- matrix(                                                  # initialize zeroed matrix.
+    0, 
+    length( unique( mat.edgelist.year[,1] ) ),                    # set dimensions to be events and persons
+    length( unique( mat.edgelist.year[,2] ) )
+    )
+  rownames( mat ) <- unique( mat.edgelist.year[,1] )              # name the rows
+  colnames( mat ) <- unique( mat.edgelist.year[,2] )              # name the columns
+  mat[mat.edgelist.year] <- 1                                     # fill edgelist indexed edges with a 1
+  diag( mat ) <- 0                                                # set the diagonal to zero
+  
+  net.year <- as.network(                                         # create the network
+    mat, bipartite=TRUE, matrix.type="adjacency"
+    )
+  
+  return( net.year )                                              # function returns an object of class network
+  
+}
 
 # ----
-# create the network
+# Execute the function for each year
 
-net <- network( dat.edgelist, 
-                matrix.type = "edgelist",
-                bipartite = TRUE
-                )
+net.2018 <- year.network( edgelist = dat.edgelist, year = 2018 )
+net.2019 <- year.network( edgelist = dat.edgelist, year = 2019 )
 
-
+!!!here: waiting on jesse
 
 
-!!!HERE: You have an edgelist, you just need to move to the next step
+for( i in 2018:2019 ){
+  x <- paste0( "net.", i)
+  x <- year.network( edgelist = dat.edgelist, year = i )
+}
 
-Note that you will probably need to go in and add the attributes so 
-you can link those
+
+for (n in 1:3) {
+  x <- get(paste0("somevar_", n))
+  print(x[2])
+}
+
 
 
 
