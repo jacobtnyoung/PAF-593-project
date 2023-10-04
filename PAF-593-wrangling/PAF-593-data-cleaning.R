@@ -32,7 +32,7 @@ dat.edgelist <- dat %>%
   group_by( UNIQUE_NAME_ID ) %>%                                # group by unique person id
   mutate( person_id = cur_group_id() ) %>%                      # create a unique person id that is numeric
   ungroup() 
-View( dat.edgelist )
+#View( dat.edgelist )
 
 
 # create the edgelists for each year ----
@@ -73,23 +73,22 @@ year.network <- function( edgelist, year ) {
 
 net.2018 <- year.network( edgelist = dat.edgelist, year = 2018 )
 net.2019 <- year.network( edgelist = dat.edgelist, year = 2019 )
-
-!!!here: waiting on jesse
-
-
-for( i in 2018:2019 ){
-  x <- paste0( "net.", i)
-  x <- year.network( edgelist = dat.edgelist, year = i )
-}
+net.2020 <- year.network( edgelist = dat.edgelist, year = 2020 )
+net.2021 <- year.network( edgelist = dat.edgelist, year = 2021 )
+net.2022 <- year.network( edgelist = dat.edgelist, year = 2022 )
+net.2023 <- year.network( edgelist = dat.edgelist, year = 2023 )
 
 
-for (n in 1:3) {
-  x <- get(paste0("somevar_", n))
-  print(x[2])
-}
+# ----
+# Save the file
 
+net.list <- list( net.2018, net.2019, net.2020, net.2021, net.2022, net.2023 )
 
+saveRDS( net.list, 
+         file = here( "PAF-593-rodeo/arrest-cleaned.rds" ) 
+         )
 
+# readRDS( file = here( "PAF-593-rodeo/arrest-cleaned.rds" ) )
 
 
 # ~~~~~~~~~~~~~ #
