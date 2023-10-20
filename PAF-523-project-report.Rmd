@@ -20,13 +20,9 @@ knitr::opts_chunk$set(
 
 # **Title: Co-Offending Networks in Phoenix (2018-2023)**
 
-<br>
-
 # **Abstract**
 
 This project shows how co-offending networks can be created from open-access data. Specifically, using data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests), two-mode networks representing individuals who are arrested together are built an examined. Attention is dedicated to examining reachability and clustering of the networks, as these are important properties identified in the research literature.
-
-<br>
 
 # **Introduction**
 
@@ -34,13 +30,9 @@ By its nature, crime tends to be a group activity (Warr, 2002). Nearly a century
 
 Studies of co-offending have shown that two structural characteristics are relevant for developing crime reduction policy: reachability and clustering. This project begins by reviewing literature on these two structural properties (reachability and clustering) and then moves toward an analysis of reachability and clustering among arrests of individuals in Phoenix between January 2018 and November 2023. The project finishes with a discussion of the value of the “open-science” approach used here and emphasizes that collaboration among researchers and practitioners in the area of crime reduction and network analysis remains a fruitful area for synergistic activity.
 
-<br>
-
 # **Project Goal**
 
 This project seeks to develop an open-science approach by examining adult arrest data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests) to construct the co-offending network of individuals arrested in Phoenix between January 2018 and November 2023. This project makes two important contributions. First, the structure of these networks will be analyzed, and policies examined as they pertain to reachability and clustering. Second, it will document how to wrangle and analyze the open-access data.
-
-<br>
 
 # **Literature Review**
 
@@ -66,8 +58,6 @@ Collaboration among researchers and practitioners in the area of crime reduction
 
 In the last quarter century, there has been a monumental shift toward making scientific practice more “open”. A key component of this so-called open science movement is access to data collected and held by government agencies, often referred to as open government. The open science and open government movements have created a watershed moment for scholars, policymakers, and citizens concerned about public safety. A key feature of the embrace of open government is in how agencies think about data. Specifically, agencies view their data as a strategic asset to achieve their missions. The availability of large amounts of digital data (“big data”) amassed in agencies marks a transition toward “governance by data” which is the “gathering, assemblage, formatting, analysis, transmission, and storage of digital data to have governance effects” (Johns, 2021: 54-55). Specific to co-offending networks, an “open science” approach would aid in forming collaborations among researcher and agencies, but would also provide a roadmap for individuals working with other agencies to follow and perhaps even coordinate. 
 
-<br>
-
 # **Project Methodology**
 
 ## *Data Acquisition and Workflow*
@@ -80,13 +70,9 @@ The co-offending data are used to construct two-mode networks. A two-mode networ
 
 In a typical, one-mode network, adjacency is defined between two nodes, $n_i$ and $n_j$ as a link $l_k = (n_i,n_j)$. These data can be represented as an **adjacency matrix**, where each node is listed on the row and the column. The $i_{th}$ row and the $j_{th}$ column of $X_{ij}$ records the value of a tie from *i* to *j*. In two-mode networks, an **adjacency matrix** can also be used to represent the data. The difference is that there are two different sets of nodes $N$ and $M$. Two nodes from separate node sets, $n_i$ and $m_j$ are adjacent if there is a link $l_k = (n_i,m_j)$. The $i_{th}$ row and the $j_{th}$ column of $X_{ij}$ records the value of a tie from $n_i$ to $m_j$.
 
-<br>
-
 ### *Reachability*
 
 Based on the adjacency matrix created above, a measure of reachability can be calculated based on how "reachable" individual **i** is to individual **j** where these nodes are connected through a co-arrest. Reachability is the inverse of the distance between the two nodes where distance is defined as the number of events that connect two individuals. In this analysis,  the minimum, mean, and maximum reachabiilty will be examined.
-
-<br>
 
 ### *Clustering*
 
@@ -95,13 +81,9 @@ In a two-mode network, the extent to which individuals overlap in their co-offen
 $$\frac{4 \times C_4}{L_3}$$
 where $C_4$ is defined as a cycle (i.e. individuals 1 and 2 are both connected to events A and B) and $L_3$ defines a 3-path structure (i.e. individual 1 is connected to events A and B). This ratio is bound between 0 and 1. The ratio represents the proportion of cycles that are closed. A value of 1 indicates that every 3-path is closed (i.e., is embedded in a cycle). Networks with values at or close to 1 will have considerable redundancy in ties. In other words, higher values of the clustering coefficient indicate greater overlap in shared co-offenders.
 
-<br>
-
 ## *Analytic Approach*
 
 I will examine the reachability scores and clustering for the co-offending networks by year.
-
-<br>
 
 # **Results**
 
@@ -146,16 +128,18 @@ The table above shows the descriptive information for the networks.  The average
 # Create a table using kable()
 kable( 
   net.data.frame %>% 
-  select( Mean.Reachability, Min.Reachability, Max.Reachability ), 
-  col.names = c( "Mean", "Minimum", "Maximum" ),
+  select( Year, Mean.Reachability, Min.Reachability, Max.Reachability ), 
+  col.names = c( "Year", "Mean", "Minimum", "Maximum" ),
   caption = "Description of Reachability for Co-Offending Networks" 
   )
 
 ```
 
+<br>
+
 ## **Reachability**
 
-Recall that **reachability** in a two-mode network is defined as the number of common nodes that two individuals connect through. In this case, it represents the number of incidents in which two individuals were arrest together. Across all years, the average reachability (i.e. the mean of the mean reachability) is `r round( mean( net.data.frame$Mean.Reachability ), 2 )`. This means that the average individual can reach `r round( mean( net.data.frame$Mean.Reachability ), 2 )` other individuals through their co-arrest history. 
+Recall that **reachability** in a two-mode network is defined as the number of common nodes that two individuals connect through. In this case, it represents the number of incidents in which two individuals were arrest together. Across all years, the average reachability (i.e. the mean of the mean reachability) is `r round( mean( net.data.frame$Mean.Reachability ), 2 )`. This means that the average individual can reach `r round( mean( net.data.frame$Mean.Reachability ), 2 )` other individuals through their co-arrest history. The trend over time has been for reachability to remain roughly similar from 2018-2023.  
 
 <br>
 
@@ -164,30 +148,50 @@ Recall that **reachability** in a two-mode network is defined as the number of c
 # Create a table using kable()
 kable( 
   net.data.frame %>% 
-  select( Reinforcement ), 
-  col.names = "Clustering",
+  select( Year, Reinforcement ), 
+  col.names = c( "Year", "Clustering" ),
   caption = "Description of Clustering for Co-Offending Networks" 
   )
 
 ```
 
+<br>
 
 ## **Clustering**
 
-The table also shows the scores for the level of clustering in the network. Recall that networks with values at or close to 1 will have considerable redundancy in ties. In other words, higher values of the clustering coefficient indicate greater overlap in shared co-offenders. Overall, the clustering is very low. This suggest that there is very little overlap in co-offenders.
-
-
-<br>
+The table also shows the scores for the level of clustering in the network. Recall that networks with values at or close to 1 will have considerable redundancy in ties. In other words, higher values of the clustering coefficient indicate greater overlap in shared co-offenders. Overall, the clustering is very low. This suggest that there is very little overlap in co-offenders. However, analysis of the trend across time shows that there has been an increase in clustering from 2018 (i.e. `r round( net.data.frame$Reinforcement[net.data.frame$Year == 2018], 3 )`) to 2023 (i.e. `r round( net.data.frame$Reinforcement[net.data.frame$Year == 2023], 3 )`). This increase in clustering over time may be indicative of an increase in the tendency for co-offenders to trust other co-offenders.
 
 # **Discussion and Policy Recommendations**
 
-<br>
+This project developed an open-science approach to examining adult arrest data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests) by constructing the co-offending network of individuals arrested in Phoenix between January 2018 and November 2023. This project makes two important contributions. 
 
-# **Conclusions**
+First, examining the *reachability* and the *clustering* in the co-offending networks, network properties shown to be important for understanding criminal organization, indicated that there is a fairly low level of reachability and clustering for all years. However, the results did show an increase in clustering from 2018 to 2023. Clustering and trust are important in co-offending networks as these structures may facilitate group solidarity and greater criminal organization. Moreover, networks where there is high clustering tend to create modularity or sets of individuals that are only connected to members of that set. The policy recommendation is that agencies focus greater attention on the mechanisms that may lead to the observed increase in clustering.
 
-<br>
+Second, this study showed how to wrangle and analyze open-access data. This study demonstrates the value of the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests) by facilitating external analysis, evaluation, and recommendation beyond actors in city agencies. The ability to create working relationships among external actors and those who seek to reduce crime in Phoenix is a major advantage of making the data available to the public. The policy recommendation is to continue to make these data public and maintain consistency in the quality of the data made available.
 
 # **References**
 
-<br>
+Andris, C., DellaPosta, D., Freelin, B. N., Zhu, X., Hinger, B., & Chen, H. (2021). To racketeer among neighbors: spatial features of criminal collaboration in the American Mafia. *International Journal of Geographical Information Science*, 35(12), 2463-2488. https://doi.org/10.1080/13658816.2021.1884869.
 
+Brantingham, P. J., Yuan, B., & Herz, D. (2020). Is Gang Violent Crime More Contagious than Non-Gang Violent Crime? *Journal of Quantitative Criminology*, 37(4), 953-977. https://doi.org/10.1007/s10940-020-09479-1. 
+
+Bright, D., Koskinen, J., & Malm, A. (2018). Illicit Network Dynamics: The Formation and Evolution of a Drug Trafficking Network. *Journal of Quantitative Criminology*, 35(2), 237-258. https://doi.org/10.1007/s10940-018-9379-8. 
+
+Bright, D., Brewer, R., & Morselli, C. (2021). Using social network analysis to study crime: Navigating the challenges of criminal justice records. *Social Networks*, 66, 50-64. https://doi.org/10.1016/j.socnet.2021.01.006. 
+
+Charette, Y., & Papachristos, A. V. (2017). The network dynamics of co-offending careers. *Social Networks*, 51, 3-13. https://doi.org/10.1016/j.socnet.2016.12.005. 
+
+Green, B., Horel, T., & Papachristos, A. V. (2017). Modeling Contagion Through Social Networks to Explain and Predict Gunshot Violence in Chicago, 2006 to 2014. *JAMA Intern Med*, 177(3), 326-333. https://doi.org/10.1001/jamainternmed.2016.8245. 
+
+Grund, T. U., & Densley, J. A. (2014). Ethnic Homophily and Triad Closure. *Journal of Contemporary Criminal Justice*, 31(3), 354-370. https://doi.org/10.1177/1043986214553377. 
+
+Johns, F. 2021. Governance by Data. *Annual Review of Law and Social Science*, 17(1), 53-71. 
+
+Ouellet, M., Hashimi, S., & Vega Yon, G. G. (2022). Officer Networks and Firearm Behaviors: Assessing the Social Transmission of Weapon-Use. *Journal of Quantitative Criminology*, 39(3), 679-703. https://doi.org/10.1007/s10940-022-09546-9.
+
+Papachristos, A. V. (2014). The Network Structure of Crime. *Sociology Compass*, 8(4), 347-357. https://doi.org/10.1111/soc4.12147.
+
+Rostami, A., & Mondani, H. (2015). The complexity of crime network data: a case study of its consequences for crime control and the study of networks. *PLoS One*, 10(3), e0119309. https://doi.org/10.1371/journal.pone.0119309. 
+
+Warr, M. (2002). *Companions in crime: The social aspects of criminal conduct*. New York, NY: 
+Cambridge University Press.
