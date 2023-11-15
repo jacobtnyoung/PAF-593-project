@@ -16,4 +16,4 @@ There are two folders:
 
 The workflow map provides a visualization of the workflow:
 
-![](/Users/jyoung20/Dropbox (ASU)/GitHub_repos/PAF-593-project/PAF-593-workflow-map.png)
+![](PAF-593-workflow-map.png)
