@@ -1,0 +1,63 @@
+---
+title: "Fostering Collaborative Solutions in the Opioid Overdose Crisis: Law Enforcement as a Potential Partner in Reducing Fatalities"
+author: "Seth Watts, MS"
+institute: |
+        | Department of Criminology and Criminal Justice
+        | Center for Violence Prevention and Community Safety
+        | Arizona State University
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+fontsize: 13pt
+output: 
+  beamer_presentation:
+    # keep_tex: true
+    # theme: Darmstadt
+    # colortheme: beaver
+    slide_level: 3 # tells you how many '#' are needed to indicate new slide
+    latex_engine: lualatex 
+header-includes:
+- \definecolor{UniMar}{RGB}{140, 29, 64}
+- \definecolor{UniYel}{RGB}{255, 198, 39}
+- \setbeamercolor{title}{fg=white, bg=UniMar}
+- \setbeamercolor{local structure}{fg=UniMar}
+- \setbeamercolor{section in head/foot}{bg=UniYel,fg=UniYel}
+- \setbeamercolor{subsection in head/foot}{fg=white, bg=UniMar}
+- \setbeamercolor{frametitle}{bg=UniMar, fg=white}
+# - \setbeamercolor{structure}{bg=UniMar}
+- \setbeamertemplate{navigation symbols}{}
+- \setbeamertemplate{footline}[frame number]
+# - \titlegraphic{\includegraphics[width=0.3\paperwidth]{asubwlogo.png}}
+# - \setbeamercolor{titlelike}{parent=structure, bg=}
+- \setbeamercolor{titlelike}{parent=structure, fg=black}
+- \setbeamertemplate{itemize item}{\color{black}$\bullet$}
+- \setbeamertemplate{itemize subitem}{\color{black}\scriptsize{$\bullet$}}
+- \setbeamercolor{enumerate item}{bg=black}
+# - \setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{background.png}
+- \setbeameroption{hide notes}
+- \setlength{\emergencystretch}{0em}
+- \setlength{\parskip}{0pt}
+# - \hypersetup{pdfpagemode=FullScreen}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(tinytex.verbose = TRUE)
+```
+
+### Overview
+* Background
+\vspace{2mm}
+  * Rising fatal opioid overdoses
+\vspace{2mm}
+  * Collaborative approaches to combating opioid overdose fatality trends
+\vspace{2mm}
+  * The role of the police in public health issues
+\vspace{2mm}
+* Remaining Questions
+\vspace{2mm}
+* Proposed Studies
+\vspace{2mm}
+  * Data and methods
+\vspace{2mm}
+  * Limitations
+\vspace{2mm}
+  * Implications

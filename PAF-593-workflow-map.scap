@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScappleDocument Version="1.2" ID="CA43173B-A6FE-4497-9707-015CC974BEE1">
+  <Notes>
+    <Note ID="0" FontSize="28.0" Position="662.3,267.6" Width="214.0">
+      <Appearance/>
+      <String>PAF-593-rodeo</String>
+      <Formatting>
+        <FormatRange Bold="Yes">0,13</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="1" FontSize="28.0" Position="223.3,262.2" Width="268.0">
+      <Appearance/>
+      <String>PAF-593-wrangling</String>
+      <Formatting>
+        <FormatRange Bold="Yes">0,17</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="2" FontSize="12.0" Position="136.1,330.2" Width="189.5">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>PAF-593-data-download-save.R</String>
+      <ConnectedNoteIDs>3</ConnectedNoteIDs>
+      <PointsToNoteIDs>3</PointsToNoteIDs>
+    </Note>
+    <Note ID="3" FontSize="12.0" Position="369.5,330.5" Width="90.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7199764848 0.8974809647 0.6336728334</Border>
+        <Fill>0.7837 0.9758 0.6903</Fill>
+      </Appearance>
+      <String>arrest-raw.rds</String>
+      <ConnectedNoteIDs>2, 4</ConnectedNoteIDs>
+    </Note>
+    <Note ID="4" FontSize="12.0" Position="310.9,434.8" Width="212.5">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>PAF-593-data-download-cleaning.R</String>
+      <ConnectedNoteIDs>3, 5</ConnectedNoteIDs>
+      <PointsToNoteIDs>5</PointsToNoteIDs>
+    </Note>
+    <Note ID="5" FontSize="12.0" Position="705.7,432.9" Width="113.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7199764848 0.8974809647 0.6336728334</Border>
+        <Fill>0.7837 0.9758 0.6903</Fill>
+      </Appearance>
+      <String>arrest-cleaned.rds</String>
+      <ConnectedNoteIDs>4, 6</ConnectedNoteIDs>
+    </Note>
+    <Note ID="6" FontSize="12.0" Position="688.2,486.5" Width="150.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>PAF-593-data-analysis.R</String>
+      <ConnectedNoteIDs>5, 8</ConnectedNoteIDs>
+    </Note>
+    <Note ID="8" FontSize="12.0" Position="958.7,487.5" Width="167.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>PAF-523-project-report.Rmd</String>
+      <ConnectedNoteIDs>6, 10</ConnectedNoteIDs>
+      <PointsToNoteIDs>10</PointsToNoteIDs>
+    </Note>
+    <Note ID="9" FontSize="28.0" Position="1160.7,264.5" Width="126.0">
+      <Appearance/>
+      <String>PAF-593</String>
+      <Formatting>
+        <FormatRange Bold="Yes">0,7</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="10" FontSize="12.0" Position="959.4,567.6" Width="167.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.9189181924 0.7627586722 0.7658078671</Border>
+        <Fill>0.9948 0.8577 0.9998</Fill>
+      </Appearance>
+      <String>PAF-523-project-report.docx</String>
+      <ConnectedNoteIDs>8</ConnectedNoteIDs>
+    </Note>
+    <Note ID="11" FontSize="12.0" Position="1173.4,485.8" Width="202.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>PAF-523-project-presentation.Rmd</String>
+      <ConnectedNoteIDs>12</ConnectedNoteIDs>
+      <PointsToNoteIDs>12</PointsToNoteIDs>
+    </Note>
+    <Note ID="12" FontSize="12.0" Position="1176.4,567.2" Width="193.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.9189181924 0.7627586722 0.7658078671</Border>
+        <Fill>0.9948 0.8577 0.9998</Fill>
+      </Appearance>
+      <String>PAF-523-project-presentation.pdf</String>
+      <ConnectedNoteIDs>11</ConnectedNoteIDs>
+    </Note>
+    <Note ID="20" FontSize="12.0" Position="142.5,101.6" Width="63.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Legend:</String>
+      <Formatting>
+        <FormatRange Bold="Yes" Underline="Yes">0,6</FormatRange>
+        <FormatRange Bold="Yes">6,1</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="21" FontSize="12.0" Position="138.5,130.6" Width="88.2">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>Script that generates a document</String>
+      <ConnectedNoteIDs>22</ConnectedNoteIDs>
+      <PointsToNoteIDs>22</PointsToNoteIDs>
+    </Note>
+    <Note ID="22" FontSize="12.0" Position="312.1,136.9" Width="75.3">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7199764848 0.8974809647 0.6336728334</Border>
+        <Fill>0.7837 0.9758 0.6903</Fill>
+      </Appearance>
+      <String>generated document</String>
+      <ConnectedNoteIDs>21, 23</ConnectedNoteIDs>
+    </Note>
+    <Note ID="23" FontSize="12.0" Position="426.5,130.7" Width="93.8">
+      <Appearance>
+        <Alignment>Left</Alignment>
+        <Border Weight="1">0.7221016288 0.8462901711 0.9162386656</Border>
+        <Fill>0.786 0.9204 0.9961</Fill>
+      </Appearance>
+      <String>dashed line indicates dependency</String>
+      <ConnectedNoteIDs>22</ConnectedNoteIDs>
+    </Note>
+    <Note ID="24" FontSize="12.0" Position="165.7,352.2" Width="131.5">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Downloads data from open data portal</String>
+      <Formatting>
+        <FormatRange Italic="Yes">0,36</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="25" FontSize="12.0" Position="342.4,465.5" Width="147.3">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Uses raw arrest data and cleans it for analysis; saves cleaned file to PAF-593-rodeo folder</String>
+      <Formatting>
+        <FormatRange Italic="Yes">0,91</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="26" FontSize="12.0" Position="697.2,519.2" Width="131.5">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Prepares data for analysis that is sourced in PAF-523-project-report.Rmd document</String>
+      <Formatting>
+        <FormatRange Italic="Yes">0,81</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="27" FontSize="12.0" Position="986.3,417.8" Width="131.5">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Renders report by sourcing PAF-593-data-analysis.R script</String>
+      <Formatting>
+        <FormatRange Italic="Yes">0,57</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="28" FontSize="12.0" Position="1214.7,434.4" Width="126.0">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Build slideshow</String>
+      <Formatting>
+        <FormatRange Italic="Yes">0,15</FormatRange>
+      </Formatting>
+    </Note>
+    <Note ID="30" FontSize="12.0" Position="141.0,188.0" Width="137.2">
+      <Appearance>
+        <Alignment>Left</Alignment>
+      </Appearance>
+      <String>Italicized text describes file actions</String>
+      <Formatting>
+        <FormatRange Italic="Yes">0,38</FormatRange>
+      </Formatting>
+    </Note>
+  </Notes>
+  <BackgroundShapes>
+    <Shape ID="13" Position="927.7,249.5" Width="496.0" Sticky="no" Height="378.0">
+      <Appearance>
+        <Border Weight="1"/>
+      </Appearance>
+    </Shape>
+    <Shape ID="14" Position="602.7,249.5" Width="299.9" Sticky="no" Height="382.0">
+      <Appearance>
+        <Border Weight="1"/>
+      </Appearance>
+    </Shape>
+    <Shape ID="15" Position="122.7,252.5" Width="460.0" Sticky="no" Height="381.0">
+      <Appearance>
+        <Border Weight="1"/>
+      </Appearance>
+    </Shape>
+    <Shape ID="19" Position="124.7,81.0" Width="461.3" Sticky="no" Height="151.5">
+      <Appearance>
+        <Border Weight="1"/>
+      </Appearance>
+    </Shape>
+  </BackgroundShapes>
+  <AutoFit>0-1, 3, 5-6, 8-12, 20</AutoFit>
+  <NoteStyles>
+    <Style Name="Bubble (Blue)" ID="54AF669F-D92D-405A-9381-2C49C36B6322" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+      <BorderThickness>1</BorderThickness>
+      <BorderColor>0.668962 0.810287 0.895092</BorderColor>
+      <FillColor>0.743291 0.900319 0.994547</FillColor>
+    </Style>
+    <Style Name="Bubble (Green)" ID="9DE0D19F-8C83-4312-99D9-D4809FA6082E" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+      <BorderThickness>1</BorderThickness>
+      <BorderColor>0.669404 0.885265 0.567007</BorderColor>
+      <FillColor>0.743782 0.983628 0.630008</FillColor>
+    </Style>
+    <Style Name="Bubble (Pink)" ID="36845067-2747-47CB-B1E4-8921001677D2" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+      <BorderThickness>1</BorderThickness>
+      <BorderColor>0.894547 0.707772 0.715904</BorderColor>
+      <FillColor>0.989115 0.814114 0.999483</FillColor>
+    </Style>
+    <Style Name="Bubble (Red)" ID="CB410CBF-A06B-4AB0-8DE4-C0B0CC4728A6" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+      <BorderThickness>1</BorderThickness>
+      <BorderColor>0.894547 0.707772 0.715904</BorderColor>
+      <FillColor>0.993941 0.786413 0.795449</FillColor>
+    </Style>
+    <Style Name="Bubble (Yellow)" ID="A3456340-05C7-4832-A521-B5F0DBBE33CC" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+      <BorderThickness>1</BorderThickness>
+      <BorderColor>0.877748 0.828289 0.562126</BorderColor>
+      <FillColor>0.975275 0.920321 0.624584</FillColor>
+    </Style>
+    <Style Name="Red Text" ID="2A1F50A3-D4B7-482C-9756-D0755E401704" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+      <TextColor>0.985954 0.0 0.02694</TextColor>
+    </Style>
+    <Style Name="Title Text" ID="31CB295D-78D4-4849-8568-E3292C07C30C" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+      <FontSize>28.0</FontSize>
+      <IsBold>Yes</IsBold>
+    </Style>
+  </NoteStyles>
+  <UISettings>
+    <BackgroundColor>0.999763 0.988395 0.949915</BackgroundColor>
+    <DefaultFont>Helvetica</DefaultFont>
+    <NoteXPadding>8.0</NoteXPadding>
+  </UISettings>
+  <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"/>
+</ScappleDocument>

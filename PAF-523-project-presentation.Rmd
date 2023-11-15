@@ -1,0 +1,197 @@
+---
+title: "PAF 593 Final Project Report - Co-Offending Networks in Phoenix (2018-2023)"
+author: "Jacob TN Young"
+fontsize: 12pt
+output: 
+  beamer_presentation:
+    # keep_tex: true
+    # theme: Darmstadt
+    # colortheme: beaver
+    slide_level: 3 # tells you how many '#' are needed to indicate new slide
+    latex_engine: lualatex 
+header-includes:
+- \definecolor{UniMar}{RGB}{18, 128, 201}
+- \definecolor{UniYel}{RGB}{255, 198, 39}
+- \setbeamercolor{title}{fg=white, bg=UniMar}
+- \setbeamercolor{local structure}{fg=UniMar}
+- \setbeamercolor{section in head/foot}{bg=UniYel,fg=UniYel}
+- \setbeamercolor{subsection in head/foot}{fg=white, bg=UniMar}
+- \setbeamercolor{frametitle}{bg=UniMar, fg=white}
+# - \setbeamercolor{structure}{bg=UniMar}
+- \setbeamertemplate{navigation symbols}{}
+- \setbeamertemplate{footline}[frame number]
+# - \titlegraphic{\includegraphics[width=0.3\paperwidth]{asubwlogo.png}}
+# - \setbeamercolor{titlelike}{parent=structure, bg=}
+- \setbeamercolor{titlelike}{parent=structure, fg=black}
+- \setbeamertemplate{itemize item}{\color{black}$\bullet$}
+- \setbeamertemplate{itemize subitem}{\color{black}\scriptsize{$\bullet$}}
+- \setbeamercolor{enumerate item}{bg=black}
+# - \setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{background.png}
+- \setbeameroption{hide notes}
+- \setlength{\emergencystretch}{0em}
+- \setlength{\parskip}{0pt}
+# - \hypersetup{pdfpagemode=FullScreen}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo = FALSE )
+options( tinytex.verbose = TRUE )
+```
+
+
+### Overview of Presentation
+* Introduction and Problem
+  * Crime is mainly a group phenomenon: co-offending networks
+  * Structural properties of co-offending networks
+
+* Project Goal
+  * Develop and pursue an open-science approach to analyzing co-offending networks in Phoenix
+
+* Project Methodology
+
+* Results
+
+* Discussion and Policy Recommendations
+
+
+### Introduction and Problem
+* Crime is mainly a group phenomenon
+  * Research and policy has focused on co-offending networks
+
+\vspace{2mm}
+
+* Important structural properties of co-offending networks
+  * Reachability
+  * Clustering
+  
+  
+### Project Goal
+* Examine reachability and clustering in co-offending networks
+
+\vspace{2mm}
+
+* Develop and pursue an open-science approach to analyzing co-offending networks in Phoenix
+
+
+### Project Methodology
+* Data Acquisition and Workflow
+  * Data were downloaded from the City of Phoenix [Open Data Portal](https://www.phoenixopendata.com/dataset/arrests)
+  * Co-offending defined as arrests between two or more individuals 
+
+\vspace{2mm}
+
+* All project documents were stored on a GitHub repository
+  * [https://github.com/jacobtnyoung/PAF-593-project](https://github.com/jacobtnyoung/PAF-593-project)
+
+
+### Project Methodology
+
+\begin{figure}
+\centering
+\includegraphics[width = 10cm]{/Users/jyoung20/Dropbox (ASU)/GitHub_repos/PAF-593-project/PAF-523-images/repo-image.png}
+    \caption{Screen shot of the repository}
+\end{figure}
+
+
+### Project Methodology
+* Network Construction
+  * A two-mode network: incidents (i.e. arrests) and individuals (i.e. people arrested together)  \vspace{2mm}
+  * Defined as: $G=(N,M,L)$, where G is the graph and is defined by two node sets N={n_1,n_2…,n_g} and M={m_1,m_2…,m_g} and an edge set: L={l_1,l_2…,l_L}
+
+\vspace{2mm}
+
+  * There are N nodes in the first set, M nodes in the second set, and L lines/edges in the network.
+
+
+### Project Methodology
+* Network Measures
+  * Reachability
+    * Inverse of the distance between the two nodes
+
+\vspace{2mm}
+
+  * Clustering
+    * Clustering coefficient defined as: $\frac{4 \times C_4}{L_3}$, where $C_4$ is defined as a cycle and $L_3$ defines a 3-path structure
+    * Higher values of the clustering coefficient indicate greater overlap in shared co-offenders
+
+
+### Analytic Approach
+* Descriptive analysis of the reachability scores and clustering coefficient for the co-offending networks by year.
+
+
+### Results
+
+\begin{figure}
+\centering
+\includegraphics[width = 5cm]{/Users/jyoung20/Dropbox (ASU)/GitHub_repos/PAF-593-project/PAF-523-images/table-1-image.png}
+    \caption{Descriptive Information for Co-Offending Networks}
+\end{figure}
+
+* Average number of incidents per year was 5,874 
+
+\vspace{2mm}
+
+* Average number of individuals involved in those events was 9,466
+
+\vspace{2mm}
+
+* General decline in co-offending from 2018 to 2023
+
+
+### Results: Description of Reachability for Co-Offending Networks
+
+\begin{figure}
+\centering
+\includegraphics[width = 5cm]{/Users/jyoung20/Dropbox (ASU)/GitHub_repos/PAF-593-project/PAF-523-images/table-2-image.png}
+    \caption{Description of Reachability for Co-Offending Networks}
+\end{figure}
+
+\vspace{2mm}
+
+* Average reachability is 6.45 
+  * Interpretation: The average individual can reach 6.45 other individuals through their co-arrest history
+
+\vspace{2mm}
+
+* The trend over time has been for reachability to remain roughly similar from 2018-2023
+
+
+### Results: Description of Clustering for Co-Offending Networks
+
+\begin{figure}
+\centering
+\includegraphics[width = 2cm]{/Users/jyoung20/Dropbox (ASU)/GitHub_repos/PAF-593-project/PAF-523-images/table-3-image.png}
+    \caption{Description of Clustering for Co-Offending Networks}
+\end{figure}
+
+\vspace{2mm}
+
+* Average clustering is 0.02
+
+\vspace{2mm}
+
+* Clustering is very low, suggesting that there is very little overlap in co-offenders 
+
+
+### Results: Description of Clustering for Co-Offending Networks (cont.)
+
+* But, an increase in clustering from 2018 (i.e. 0.007) to 2023 (i.e. 0.025)
+  * May be indicative of an increase in the tendency for co-offenders to trust other co-offenders
+
+
+### Discussion and Policy Recommendations
+* Results show an increase in clustering from 2018 to 2023
+
+  * Clustering and trust are important in co-offending networks as these structures may facilitate group solidarity and greater criminal organization
+  
+  * Networks where there is high clustering tend to create modularity or sets of individuals that are only connected to members of that set. 
+
+\vspace{2mm}
+  
+* The **policy recommendation** is that agencies focus greater attention on the mechanisms that may lead to the observed increase in clustering.
+
+
+### Discussion and Policy Recommendations
+* Developed an open-science approach to examining adult arrest data from the City of Phoenix Open Data Portal
+ * Shows importance of reproducible results
+ * Provides a framework that can be updated as more data are generated

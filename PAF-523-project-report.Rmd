@@ -24,6 +24,7 @@ knitr::opts_chunk$set(
 
 This project shows how co-offending networks can be created from open-access data. Specifically, using data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests), two-mode networks representing individuals who are arrested together are built an examined. Attention is dedicated to examining reachability and clustering of the networks, as these are important properties identified in the research literature.
 
+
 # **Introduction**
 
 By its nature, crime tends to be a group activity (Warr, 2002). Nearly a century of research points to the important role that social relationships play in criminal behavior, indicating that crime is a “network” phenomenon (Papachristos, 2014). While this body of research has covered diverse networks such as gangs (Grund and Densley, 2014), drug distribution (Bright, Koskinen, and Malm, 2018), and mafia syndicates (Andris, et. al., 2021), the bulk of the work focuses on co-offending networks. That is, the relational structure by which individuals participate in crime together. Simultaneously, as police departments have moved toward more intelligence-based efforts at policing, examining co-offending networks has become a key tool in crime reduction efforts (Rostami and Mondani, 2015). 
@@ -119,7 +120,7 @@ kable(
 
 ```
 
-The table above shows the descriptive information for the networks.  The average number of incidents per year was `r round( mean( net.data.frame$Events ), 0 )` and the average number of individuals involved in those events was `r round( mean( net.data.frame$Individuals ), 0 )`.
+The table above shows the descriptive information for the networks. The average number of incidents per year was `r round( mean( net.data.frame$Events ), 0 )` and the average number of individuals involved in those events was `r round( mean( net.data.frame$Individuals ), 0 )`. The table also shows a general decline in the number of co-offending events from 2018 to 2023. 
 
 <br>
 
@@ -159,7 +160,7 @@ kable(
 
 ## **Clustering**
 
-The table also shows the scores for the level of clustering in the network. Recall that networks with values at or close to 1 will have considerable redundancy in ties. In other words, higher values of the clustering coefficient indicate greater overlap in shared co-offenders. Overall, the clustering is very low. This suggest that there is very little overlap in co-offenders. However, analysis of the trend across time shows that there has been an increase in clustering from 2018 (i.e. `r round( net.data.frame$Reinforcement[net.data.frame$Year == 2018], 3 )`) to 2023 (i.e. `r round( net.data.frame$Reinforcement[net.data.frame$Year == 2023], 3 )`). This increase in clustering over time may be indicative of an increase in the tendency for co-offenders to trust other co-offenders.
+The table also shows the scores for the level of clustering in the network. Recall that networks with values at or close to 1 will have considerable redundancy in ties. In other words, higher values of the clustering coefficient indicate greater overlap in shared co-offenders. Overall, the clustering is very low. Across all years, the average clustering is `r round( mean( net.data.frame$Reinforcement ), 2 )`. This suggest that there is very little overlap in co-offenders. However, analysis of the trend across time shows that there has been an increase in clustering from 2018 (i.e. `r round( net.data.frame$Reinforcement[net.data.frame$Year == 2018], 3 )`) to 2023 (i.e. `r round( net.data.frame$Reinforcement[net.data.frame$Year == 2023], 3 )`). This increase in clustering over time may be indicative of an increase in the tendency for co-offenders to trust other co-offenders.
 
 # **Discussion and Policy Recommendations**
 
