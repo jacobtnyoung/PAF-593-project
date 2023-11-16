@@ -1,7 +1,6 @@
 ---
 title: "PAF 593 Final Project Report - Co-Offending Networks in Phoenix (2018-2023)"
 author: "Jacob T.N. Young"
-date: "`r Sys.Date()`"
 output: word_document
 ---
 
@@ -22,7 +21,7 @@ knitr::opts_chunk$set(
 
 # **Abstract**
 
-This project shows how co-offending networks can be created from open-access data. Specifically, using data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests), two-mode networks representing individuals who are arrested together are built an examined. Attention is dedicated to examining reachability and clustering of the networks, as these are important properties identified in the research literature.
+This project shows how co-offending networks can be created from open-access data. Specifically, using data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests), two-mode networks representing individuals who are arrested together are built and examined. Attention is dedicated to examining reachability and clustering of the networks, as these are important properties identified in the research literature. Examining the reachability and the clustering in the co-offending networks, indicated that there is a low level of reachability and clustering for all years. However, the results did show an increase in clustering from 2018 to 2023. Clustering and trust are important in co-offending networks as these structures may facilitate group solidarity and greater criminal organization. The policy recommendation is that police agencies focus greater attention on the mechanisms that may lead to the observed increase in clustering.
 
 
 # **Introduction**
@@ -67,7 +66,7 @@ Data were downloaded from the City of Phoenix Open Data Portal. A workflow was c
 
 ## *Network Construction and Measures*
 
-The co-offending data are used to construct two-mode networks. A two-mode network has two sets of nodes: incidents (i.e. arrests) and individuals (i.e. people arrested together and edges only occur between these partitions (i.e. not within). The definition of a two-mode network is the following: $G = (N,M,L)$ where $G$ is the graph and is defined by two node sets $N = \{n_1, n_2…, n_g\}$ and $M = \{m_1, m_2…, m_g\}$ and an edge set: $L = \{l_1, l_2…, l_L\}$. In this definition, there are $N$ nodes in the first set, $M$ nodes in the second set, and $L$ lines/edges in the network.
+The co-offending data are used to construct two-mode networks. A two-mode network has two sets of nodes: incidents (i.e. arrests) and individuals (i.e. people arrested together) and edges only occur between these partitions (i.e. not within). The definition of a two-mode network is the following: $G = (N,M,L)$ where $G$ is the graph and is defined by two node sets $N = \{n_1, n_2…, n_g\}$ and $M = \{m_1, m_2…, m_g\}$ and an edge set: $L = \{l_1, l_2…, l_L\}$. In this definition, there are $N$ nodes in the first set, $M$ nodes in the second set, and $L$ lines/edges in the network.
 
 In a typical, one-mode network, adjacency is defined between two nodes, $n_i$ and $n_j$ as a link $l_k = (n_i,n_j)$. These data can be represented as an **adjacency matrix**, where each node is listed on the row and the column. The $i_{th}$ row and the $j_{th}$ column of $X_{ij}$ records the value of a tie from *i* to *j*. In two-mode networks, an **adjacency matrix** can also be used to represent the data. The difference is that there are two different sets of nodes $N$ and $M$. Two nodes from separate node sets, $n_i$ and $m_j$ are adjacent if there is a link $l_k = (n_i,m_j)$. The $i_{th}$ row and the $j_{th}$ column of $X_{ij}$ records the value of a tie from $n_i$ to $m_j$.
 
@@ -164,7 +163,7 @@ The table also shows the scores for the level of clustering in the network. Reca
 
 # **Discussion and Policy Recommendations**
 
-This project developed an open-science approach to examining adult arrest data from the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests) by constructing the co-offending network of individuals arrested in Phoenix between January 2018 and November 2023. This project makes two important contributions. 
+This project developed an open-science approach to examining adult arrest data from the City of Phoenix Open Data Portal by constructing the co-offending network of individuals arrested in Phoenix between January 2018 and November 2023. This project makes two important contributions. 
 
 First, examining the *reachability* and the *clustering* in the co-offending networks, network properties shown to be important for understanding criminal organization, indicated that there is a fairly low level of reachability and clustering for all years. However, the results did show an increase in clustering from 2018 to 2023. Clustering and trust are important in co-offending networks as these structures may facilitate group solidarity and greater criminal organization. Moreover, networks where there is high clustering tend to create modularity or sets of individuals that are only connected to members of that set. The policy recommendation is that agencies focus greater attention on the mechanisms that may lead to the observed increase in clustering.
 

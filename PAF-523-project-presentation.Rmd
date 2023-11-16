@@ -116,7 +116,7 @@ options( tinytex.verbose = TRUE )
 
 
 ### Analytic Approach
-* Descriptive analysis of the reachability scores and clustering coefficient for the co-offending networks by year.
+* Descriptive analysis of the reachability scores and clustering coefficient for the co-offending networks by year
 
 
 ### Results
