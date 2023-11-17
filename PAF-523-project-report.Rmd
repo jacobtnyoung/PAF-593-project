@@ -62,7 +62,15 @@ In the last quarter century, there has been a monumental shift toward making sci
 
 ## *Data Acquisition and Workflow*
 
-Data were downloaded from the City of Phoenix Open Data Portal. A workflow was created whereby the data were downloaded, cleaned, and then analyzed. The workflow and all code used for this project are available at the following GitHub repository: https://github.com/jacobtnyoung/PAF-593-project.
+Data were downloaded from the City of Phoenix Open Data Portal. A workflow was created whereby the data were downloaded, cleaned, and then analyzed. The workflow and all code used for this project are available at the following GitHub repository: https://github.com/jacobtnyoung/PAF-593-project. As emphasized above, a strength of the open-science approach is that the entire workflow can be examined and reproduced by other researchers or agency analysts. For this project, the workflow is shown in the figure below:
+
+![](PAF-593-workflow-map.png)
+
+In the upper-left corner, a legend shows the meaning of the line types and colors of the bubbles. Blue bubbles are scripts that execute code to build objects (e.g. a data file, a document). Green bubbles are objects created by the script. This creation process is shown by the connecting solid arrow. Finally, the dashed line indicates a dependency. That is, a blue bubble with a dash line shows that it depends on some other file (e.g. a data set). 
+
+In the figure, the workflow for the project is shown. Starting from the left, the PAF-593-wrangling box is a folder of which the files "wrangle" the raw data. As described, the *PAF-593-data-download-save.R* file downloads the data available through the open data portal. This file creates a data file called *arrest-raw.rds*. Next, the *PAF-593-data-download-cleaning.R* file uses the *arrest-raw.rds* file (i.e. a dependency) to clean and prepare a file for analysis. This file, *arrest-cleaned.rds* is stored in the PAF-593-rodeo folder. In that folder, the *PAF-593-data-analysis.R* file uses the *arrest-cleaned.rds* file to build the networks that are analyzed in this paper. This file contains a set of instructions for handling the data and is called from the main folder, PAF-593, with the *PAF-593-project-report.Rmd* file. This file creats the project report document. Finally, the *PAF-593-project-presentation.Rmd* file creates the project presentation document.
+
+As can be seen, the workflow for the project is fully documented and can be reproduced. This is a valuable property for agency analysts who may want to confirm the findings of this study. But, more importantly, for analysts who want to build or modify the approach adopted here. In other words, beyond the analysis presented below, the repository of code and workflow is a valuable asset for an agency.
 
 ## *Network Construction and Measures*
 
