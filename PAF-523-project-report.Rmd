@@ -26,9 +26,13 @@ This project shows how co-offending networks can be created from open-access dat
 
 # **Introduction**
 
-By its nature, crime tends to be a group activity (Warr, 2002). Nearly a century of research points to the important role that social relationships play in criminal behavior, indicating that crime is a “network” phenomenon (Papachristos, 2014). While this body of research has covered diverse networks such as gangs (Grund and Densley, 2014), drug distribution (Bright, Koskinen, and Malm, 2018), and mafia syndicates (Andris, et. al., 2021), the bulk of the work focuses on co-offending networks. That is, the relational structure by which individuals participate in crime together. Simultaneously, as police departments have moved toward more intelligence-based efforts at policing, examining co-offending networks has become a key tool in crime reduction efforts (Rostami and Mondani, 2015). 
+By its nature, crime tends to be a group activity (Warr, 2002). Nearly a century of research points to the important role that social relationships play in criminal behavior, indicating that crime is a “network” phenomenon (Papachristos, 2014). While this body of research has covered diverse networks such as gangs (Grund and Densley, 2014), drug distribution (Bright, Koskinen, and Malm, 2018), and mafia syndicates (Andris, et. al., 2021), the bulk of the work focuses on co-offending networks. That is, the relational structure by which individuals participate in crime together. Concurrently, the evolving landscape of policing strategies has witnessed a paradigm shift towards intelligence-driven methodologies. Within this context, the scrutiny of co-offending networks has emerged as an indispensable tool in the arsenal of crime reduction efforts, as expounded by the scholarly contributions of Rostami and Mondani in 2015. This confluence of research and practical application underscores the intrinsic value attributed to understanding the structural dynamics of co-offending networks, given their pivotal role in informing law enforcement strategies aimed at curbing criminal activities.
 
-Studies of co-offending have shown that two structural characteristics are relevant for developing crime reduction policy: reachability and clustering. This project begins by reviewing literature on these two structural properties (reachability and clustering) and then moves toward an analysis of reachability and clustering among arrests of individuals in Phoenix between January 2018 and November 2023. The project finishes with a discussion of the value of the “open-science” approach used here and emphasizes that collaboration among researchers and practitioners in the area of crime reduction and network analysis remains a fruitful area for synergistic activity.
+Research on co-offending has elucidated that two fundamental structural characteristics, namely reachability and clustering, bear significant relevance in the formulation of policies geared towards crime reduction. To embark upon a comprehensive exploration of these structural nuances, this undertaking commences with an extensive review of the existing literature pertaining to the intricacies of reachability and clustering. This meticulous review serves as a foundational step in building a nuanced understanding of the theoretical underpinnings and empirical insights associated with these structural properties within the context of co-offending networks.
+
+Subsequently, the project seamlessly transitions into a granular analysis of reachability and clustering within the spectrum of arrests recorded for individuals in the city of Phoenix, spanning the temporal expanse from January 2018 to November 2023. This empirical investigation delves into the intricate patterns and variations exhibited by these structural characteristics, providing a comprehensive snapshot of the evolving dynamics within the co-offending networks prevalent in the specified geographic and temporal domain.
+
+The culmination of this project entails a reflective and forward-looking discussion on the intrinsic value of the "open-science" approach. Emphasis is placed on the collaborative synergy between researchers and practitioners operating in the domains of crime reduction and network analysis. The discourse underscores the enduring potential for fruitful collaborative endeavors in deciphering the complexities of crime reduction strategies, thus affirming the perpetual significance of cohesive activities in this multifaceted arena. In essence, this project not only contributes empirically to our understanding of co-offending networks but also advocates for the sustained collaborative engagement of scholarly and practical stakeholders in the perpetual pursuit of efficacious crime reduction strategies.
 
 # **Project Goal**
 
@@ -68,9 +72,78 @@ Data were downloaded from the City of Phoenix Open Data Portal. A workflow was c
 
 In the upper-left corner, a legend shows the meaning of the line types and colors of the bubbles. Blue bubbles are scripts that execute code to build objects (e.g. a data file, a document). Green bubbles are objects created by the script. This creation process is shown by the connecting solid arrow. Finally, the dashed line indicates a dependency. That is, a blue bubble with a dash line shows that it depends on some other file (e.g. a data set). 
 
-In the figure, the workflow for the project is shown. Starting from the left, the PAF-593-wrangling box is a folder of which the files "wrangle" the raw data. As described, the *PAF-593-data-download-save.R* file downloads the data available through the open data portal. This file creates a data file called *arrest-raw.rds*. Next, the *PAF-593-data-download-cleaning.R* file uses the *arrest-raw.rds* file (i.e. a dependency) to clean and prepare a file for analysis. This file, *arrest-cleaned.rds* is stored in the PAF-593-rodeo folder. In that folder, the *PAF-593-data-analysis.R* file uses the *arrest-cleaned.rds* file to build the networks that are analyzed in this paper. This file contains a set of instructions for handling the data and is called from the main folder, PAF-593, with the *PAF-593-project-report.Rmd* file. This file creats the project report document. Finally, the *PAF-593-project-presentation.Rmd* file creates the project presentation document.
+In the figure, the workflow for the project is shown. Starting from the left, the PAF-593-wrangling box is a folder of which the files "wrangle" the raw data. As described, the *PAF-593-data-download-save.R* file downloads the data available through the open data portal. This file creates a data file called *arrest-raw.rds*. Next, the *PAF-593-data-download-cleaning.R* file uses the *arrest-raw.rds* file (i.e. a dependency) to clean and prepare a file for analysis. This file, *arrest-cleaned.rds* is stored in the PAF-593-rodeo folder. In that folder, the *PAF-593-data-analysis.R* file uses the *arrest-cleaned.rds* file to build the networks that are analyzed in this paper. This file contains a set of instructions for handling the data and is called from the main folder, PAF-593, with the *PAF-593-project-report.Rmd* file. This file creates the project report document. Finally, the *PAF-593-project-presentation.Rmd* file creates the project presentation document.
 
 As can be seen, the workflow for the project is fully documented and can be reproduced. This is a valuable property for agency analysts who may want to confirm the findings of this study. But, more importantly, for analysts who want to build or modify the approach adopted here. In other words, beyond the analysis presented below, the repository of code and workflow is a valuable asset for an agency.
+
+## *Wrangling*
+
+Data wrangling is the process by which raw data (in this case the data available on the Open Data Portal) are transformed through a series of steps into a format or structure that is ideal for an end user. To build the networks, the raw data required significant "wrangling" in order to get it in a form to use. The major reforming, as processed in the *PAF-593-data-cleaning.R* file, was to restructure the data into an **edgelist**. An edgelist is a data object in which the rows correspond to edges in a network and the columns refer to the nodes. For example, if Jim, Steve, and Louis are involved in a single co-offending event, then the edgelist would have three rows representing, respectively, the tie from Jim to Steve, Jim to Louis, and Steve to Louis.
+
+In order to create this file structure from the raw data, several manipulations were needed. The code to render the edgelist is shown below:
+
+```{r, echo = TRUE, eval = FALSE}
+
+dat.edgelist <- dat %>% 
+  select( YEAR, UNIQUE_NAME_ID, ARST_OFFICER, HUNDREDBLOCKADDR ) %>%
+  group_by( HUNDREDBLOCKADDR, ARST_OFFICER ) %>%                
+  filter( n() > 1 ) %>%                                         
+  arrange( ARST_OFFICER ) %>%                                   
+  mutate( incident_id = cur_group_id() ) %>%                    
+  ungroup() %>%                                                 
+  group_by( UNIQUE_NAME_ID ) %>%                                
+  mutate( person_id = cur_group_id() ) %>%                      
+  ungroup() 
+
+```
+
+The code above creates an object called `dat.edgelist` that is an edgelist. This object is created by executing the following steps. First, take the object `dat` which represents the raw data pulled from the Open Data Portal. Second, keep the variables `YEAR`, `UNIQUE_NAME_ID`, `ARST_OFFICER`, and `HUNDREDBLOCKADDR`. These variables are kept because they are used to identify unique co-arrest incidents. Third, the data are "grouped" or sorted according to the `HUNDREDBLOCKADDR` variable and then by the `ARST_OFFICER` variable. Fourth, cases that only have 1 individual are removed. In other words, incidents in which only a single person was arrested are dropped because these are not co-offending incidents. Fifth, a variable that serves as a unique id for the incident is created, `incident_id`, as well as a unique id for the individuals involved in the incident, `person_id`, is created. 
+
+This procedure can be seen by reviewing the raw data below:
+
+```{r wrangling-setup, warning=FALSE, results="hide"}
+
+# ----
+# Clear workspace and load libraries
+
+rm( list = ls() )
+library( here )    # for importing and using the local directory
+library( dplyr )   # for working with the data
+
+dat <- readRDS( file = here( "PAF-593-wrangling/arrest-raw.rds" ) )
+
+```
+
+```{r wrangling-example, warning=FALSE, echo=FALSE, eval=TRUE}
+
+dat2 <- dat %>% 
+  select( YEAR, UNIQUE_NAME_ID, ARST_OFFICER, HUNDREDBLOCKADDR )
+
+as.matrix( head( dat2 ) )
+
+```
+
+After executing the code discussed above, the wrangled data look like this:
+
+```{r, echo = FALSE, eval = TRUE}
+
+dat.edgelist2 <- dat %>% 
+  select( YEAR, UNIQUE_NAME_ID, ARST_OFFICER, HUNDREDBLOCKADDR ) %>%
+  group_by( HUNDREDBLOCKADDR, ARST_OFFICER ) %>%                
+  filter( n() > 1 ) %>%                                         
+  arrange( ARST_OFFICER ) %>%                                   
+  mutate( incident_id = cur_group_id() ) %>%                    
+  ungroup() %>%                                                 
+  group_by( UNIQUE_NAME_ID ) %>%                                
+  mutate( person_id = cur_group_id() ) %>%                      
+  ungroup() %>% 
+  select( person_id, incident_id ) 
+
+as.matrix( head( dat.edgelist2 ) )
+
+```
+
+As shown, the data have been wrangled into a edgelist where the first column represents the unique id of an individual arrested at that incident and the second column represents a unique id for an incident. For example, the incident "8205" connects individuals "6383", "10761", and "3000". This edgelist can then be used to construct a network object.
 
 ## *Network Construction and Measures*
 
@@ -91,7 +164,7 @@ where $C_4$ is defined as a cycle (i.e. individuals 1 and 2 are both connected t
 
 ## *Analytic Approach*
 
-I will examine the reachability scores and clustering for the co-offending networks by year.
+First, descriptive information for each network will be presented. Then, the reachability scores and clustering for the co-offending networks by year will be examined.
 
 # **Results**
 
@@ -171,11 +244,19 @@ The table also shows the scores for the level of clustering in the network. Reca
 
 # **Discussion and Policy Recommendations**
 
-This project developed an open-science approach to examining adult arrest data from the City of Phoenix Open Data Portal by constructing the co-offending network of individuals arrested in Phoenix between January 2018 and November 2023. This project makes two important contributions. 
+This project embarked upon the development of an open-science methodology with the primary objective of scrutinizing adult arrest data gleaned from the City of Phoenix Open Data Portal. This involved the meticulous construction of a co-offending network, encompassing individuals subjected to arrest within the temporal span from January 2018 to November 2023. Noteworthy in its pursuits, this project stands as a significant contributor on two distinct fronts.
 
-First, examining the *reachability* and the *clustering* in the co-offending networks, network properties shown to be important for understanding criminal organization, indicated that there is a fairly low level of reachability and clustering for all years. However, the results did show an increase in clustering from 2018 to 2023. Clustering and trust are important in co-offending networks as these structures may facilitate group solidarity and greater criminal organization. Moreover, networks where there is high clustering tend to create modularity or sets of individuals that are only connected to members of that set. The policy recommendation is that agencies focus greater attention on the mechanisms that may lead to the observed increase in clustering.
+Firstly, an analysis of the *reachability* and *clustering* characteristics within the co-offending networks. These network properties, acknowledged as pivotal in comprehending the intricacies of criminal organizations, revealed a consistently low level of both reachability and clustering across all years under consideration. However, the analysis did bring to light a discernible uptick in clustering from the inception of 2018 to the culmination of 2023. The implications of clustering and trust within co-offending networks are paramount, as these structural elements are perceived to foster group solidarity and contribute to the overarching framework of criminal organization. Furthermore, networks exhibiting heightened clustering tendencies are prone to generating modularity, wherein sets of individuals exclusively interconnect within their designated groups. A salient policy recommendation emanating from these findings advocates for intensified focus by agencies on the underlying mechanisms contributing to the observed surge in clustering.
 
-Second, this study showed how to wrangle and analyze open-access data. This study demonstrates the value of the City of Phoenix Open Data Portal (https://www.phoenixopendata.com/dataset/arrests) by facilitating external analysis, evaluation, and recommendation beyond actors in city agencies. The ability to create working relationships among external actors and those who seek to reduce crime in Phoenix is a major advantage of making the data available to the public. The policy recommendation is to continue to make these data public and maintain consistency in the quality of the data made available.
+Secondly, this study demonstrated a systematic approach to navigating and dissecting open-access data. The elucidation of this process underscores the intrinsic value embedded within the City of Phoenix Open Data Portal (accessible at https://www.phoenixopendata.com/dataset/arrests). The portal, by serving as a conduit for external analysis, evaluation, and recommendations, transcends the confines of city agencies and extends its utility to a broader audience. A pivotal revelation emanating from this endeavor is the facilitation of collaborative relationships between external entities and those vested in the pursuit of crime reduction within Phoenix. Consequently, the policy recommendation posits that the continued public accessibility of such data, coupled with an unwavering commitment to maintaining data quality, is imperative for perpetuating the advantages derived from fostering external engagements in the ongoing effort to curb criminal activities.
+
+# **Conclusion**
+
+Criminal activities have long been recognized as inherently social endeavors, as underscored by the scholarly insights of Warr (2002), whose nearly century-spanning research attests to the pivotal role social relationships play in shaping criminal behavior. The elucidation of the networked nature inherent in co-offending, as expounded by Papachristos (2014) and echoed in the discourse of this report, not only accentuates this sociocentric dimension but also underscores the growing significance of scrutinizing co-offending networks as a cornerstone in endeavors aimed at reducing crime, a sentiment echoed by the scholarly contributions of Rostami and Mondani (2015).
+
+This study, conducted within the framework of an open-science approach, stands as a testament to the capability of leveraging publicly accessible data to delve into the structural characteristics of co-offending networks. The strategic utilization of an open-science paradigm not only showcases the viability of employing such methodologies for scrutinizing network structures relevant to the formulation of crime reduction policies but also positions it as a pioneering avenue for future research endeavors. The intrinsic value of this approach lies in its capacity to unveil and dissect intricate network dynamics that contribute to our understanding of criminal activities.
+
+In summation, the "open-science" approach exemplified in this study emerges as a crucial and forward-looking trajectory for subsequent investigations. It accentuates the need for collaborative endeavors among researchers and practitioners within the realms of crime reduction and network analysis, emphasizing the continued potential for synergistic activities that can yield profound insights into the multifaceted landscape of criminal behavior and inform effective strategies for crime reduction.
 
 # **References**
 
